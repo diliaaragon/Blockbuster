@@ -1,11 +1,13 @@
 require './categories'
 require './movie'
+require './user'
 
 class Store
 
   def initialize
     @categories = []
     @movies = []
+    @users = []
   end
 
   def add_category(name)
@@ -47,5 +49,27 @@ class Store
   def edit_movie(name, quant, index)
     @movies[index].name = name
     @movies[index].quantity += quant
+  end
+
+  def add_user(name, id)
+    p = User.new(name, id)
+    @users << p
+  end
+
+  def list_user
+    @users.each_with_index do |user, index|
+      name = user.name
+      id = user.id
+      puts "#{index}. #{name} - id: #{id}"
+    end
+  end
+
+  def delete_user(index)
+    @users.delete_at(index)
+  end
+
+  def edit_user(name, id, index)
+    @users[index].name = name
+    @users[index].id = id
   end
 end

@@ -3,7 +3,7 @@ class User
 
   def initialize(name, id) 
     @name = name
-    @id id
+    @id = id
     @movies = [] 
   end
 end

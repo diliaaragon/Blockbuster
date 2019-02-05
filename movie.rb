@@ -12,7 +12,4 @@ class Movie
     @categories << index
   end
 
-  def rented_movie()
-  end
-
 end

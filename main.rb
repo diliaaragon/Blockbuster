@@ -1,5 +1,4 @@
 require './store'
-movie = Movie.new
 all = Store.new
 
 continue = true
@@ -86,7 +85,45 @@ while continue
       else
         puts 'Error: incorrect option'
       end
+    when  3  
+      puts """
+      1. Add 
+      2. List
+      3.Delete
+      4.Edit
+      SELECT ONE OPTION
+      """
+      option = gets.chomp.to_i
+      if option == 1
+        puts  'Add user'
+        puts 'Name: '
+        name = gets.chomp
+        puts 'Identification: '
+        id = gets.chomp.to_i
+        all.add_user(name, id)
+        puts 'All ready'
+      elsif option == 2
+        all.list_user
+      elsif option == 3
+        all.list_user
+        puts 'Select the user you want to delete:'
+        index = gets.chomp.to_i
+        all.delete_user(index)
+      elsif option == 4
+        all.list_user
+        puts 'Select the user you want to edit:'
+        index = gets.chomp.to_i
+        puts 'New name:'
+        name = gets.chomp 
+        puts 'New identification:'
+        id = gets.chomp.to_i
+        all.edit_user(name, id, index)
+      else
+        puts 'Incorrect option'
+      end
 
     else
+    puts 'Error'
+
   end
 end
