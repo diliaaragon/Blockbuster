@@ -7,6 +7,7 @@ continue = true
 while continue
   puts """
   1. Category
+  2. Movie
   SELECT ONE OPTION
   """
   option =gets.chomp.to_i
@@ -37,9 +38,45 @@ while continue
         index = gets.chomp.to_i
         puts 'Insert new name:'
         name = gets.chomp
+        all.edit_category(index, name)
       else 
         puts "Incorrect option" 
       end
+    when 2
+      puts """
+      1. Add 
+      2. List
+      3.Delete
+      4.Edit
+      5.
+      SELECT ONE OPTION
+      """
+      option = gets.chomp.to_i
+      if option == 1
+        puts 'Insert name of the movie:'
+        name = gets.chop
+        puts 'Insert the quantity of stock:'
+        quant = gets.chomp.to_i
+        all.add_movie(name, quant)
+        puts 'OK'
+      elsif option == 2
+        all.list_movie
+      elsif option == 3
+        all.list_movie
+        puts 'What movie do you want to eliminate?'
+        index = gets.chomp.to_i
+        all.delete_movie(index)
+      elsif option == 4
+        all.list_movie
+        puts 'select to movie'
+        index = gets.chomp.to_i
+        puts 'Insert new name'
+        name = gets.chomp
+        puts 'Insert new quantity'
+        quant = gets.chomp.to_i
+        all.edit_movie(index, name, quant)
+      end
+
     else
   end
 end 
