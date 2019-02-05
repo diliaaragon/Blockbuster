@@ -1,5 +1,5 @@
 require './store'
-
+movie = Movie.new
 all = Store.new
 
 continue = true
@@ -8,6 +8,7 @@ while continue
   puts """
   1. Category
   2. Movie
+  3. User
   SELECT ONE OPTION
   """
   option =gets.chomp.to_i
@@ -39,8 +40,8 @@ while continue
         puts 'Insert new name:'
         name = gets.chomp
         all.edit_category(index, name)
-      else 
-        puts "Incorrect option" 
+      else
+        puts "Incorrect option"
       end
     when 2
       puts """
@@ -48,7 +49,9 @@ while continue
       2. List
       3.Delete
       4.Edit
-      5.
+      5.Assign categories
+      6. Rented
+      7. Return movie
       SELECT ONE OPTION
       """
       option = gets.chomp.to_i
@@ -75,8 +78,15 @@ while continue
         puts 'Insert new quantity'
         quant = gets.chomp.to_i
         all.edit_movie(index, name, quant)
+      elsif option == 5
+        all.list_category
+        puts 'select categories:'
+        index = gets.chomp.to_i
+        movie.add_category_at_movie (index)
+      else
+        puts 'Error: incorrect option'
       end
 
     else
   end
-end 
+end
