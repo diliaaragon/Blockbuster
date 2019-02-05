@@ -5,20 +5,25 @@ continue = true
 
 while continue
   puts """
-  1. Category
-  2. Movie
-  3. User
-  SELECT ONE OPTION
+  _______________________________
+  |    WELCOME TO BLOCKBUSTER   |
+  |_____________________________|
+  | 1. Category                 |
+  | 2. Movie                    |
+  | 3. User                     |
+  |     SELECT ONE OPTION       |
+  |_____________________________|
   """
   option =gets.chomp.to_i
   case option
     when 1
       puts """
-      1. Add 
-      2. List
-      3.Delete
-      4.Edit
-      SELECT ONE OPTION
+      ____________________
+      | 1. Add           |
+      | 2. List          |
+      | 3.Delete         |
+      | 4.Edit           |
+      |SELECT ONE OPTION |
       """
       option = gets.chomp.to_i
       if option == 1
@@ -42,18 +47,21 @@ while continue
       else
         puts "Incorrect option"
       end
+
     when 2
       puts """
-      1. Add 
-      2. List
-      3.Delete
-      4.Edit
-      5.Assign categories
-      6. Rented
-      7. Return movie
-      SELECT ONE OPTION
+      _______________________
+      | 1. Add              |
+      | 2. List             |
+      | 3.Delete            |
+      | 4.Edit              |
+      | 5.Assign categories |
+      | 6. Rented           |
+      | 7. Return movie     |
+      | SELECT ONE OPTION   |
       """
       option = gets.chomp.to_i
+
       if option == 1
         puts 'Insert name of the movie:'
         name = gets.chop
@@ -86,7 +94,6 @@ while continue
         index_category = gets.chomp.to_i
         all.assign_categories(index_movie, index_category)
         puts 'All ready'
-        
       elsif option == 6
         puts 'Insert user identification:'
         id = gets.chomp.to_i
@@ -107,13 +114,15 @@ while continue
       else
         puts 'Error: incorrect option'
       end
+
     when  3  
       puts """
-      1. Add 
-      2. List
-      3.Delete
-      4.Edit
-      SELECT ONE OPTION
+      ____________________
+      | 1. Add           |
+      |2. List           |
+      |3.Delete          |
+      |4.Edit            |
+      |SELECT ONE OPTION |
       """
       option = gets.chomp.to_i
       if option == 1
@@ -143,9 +152,12 @@ while continue
       else
         puts 'Incorrect option'
       end
-
+      
     else
-    puts 'Error'
-
+    puts 'Error: INCORRECT OPTION'
   end
+  puts 'Want to continue?y/n'
+  answer = gets.chomp
+  answer.downcase
+  continue = false if answer == 'n'
 end
