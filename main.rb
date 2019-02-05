@@ -47,7 +47,6 @@ while continue
       else
         puts "Incorrect option"
       end
-
     when 2
       puts """
       _______________________
@@ -61,7 +60,6 @@ while continue
       | SELECT ONE OPTION   |
       """
       option = gets.chomp.to_i
-
       if option == 1
         puts 'Insert name of the movie:'
         name = gets.chop
@@ -97,15 +95,15 @@ while continue
       elsif option == 6
         puts 'Insert user identification:'
         id = gets.chomp.to_i
-        respuesta = all.user_exist?(id) 
-        if respuesta == true 
+        respuesta = all.user_exist?(id)
+        if respuesta == true
           all.list_movie
           puts 'Select the movie'
           index = gets.chomp.to_i
           all.rented_movie(id, index)
         else
           puts "User don't exist"
-        end 
+        end
       elsif option == 7
         puts 'What movie do you want to return?'
         all.list_movie
@@ -114,8 +112,7 @@ while continue
       else
         puts 'Error: incorrect option'
       end
-
-    when  3  
+    when  3
       puts """
       ____________________
       | 1. Add           |
@@ -127,9 +124,9 @@ while continue
       option = gets.chomp.to_i
       if option == 1
         puts  'Add user'
-        puts 'Name: '
+        puts 'Name:'
         name = gets.chomp
-        puts 'Identification: '
+        puts 'Identification:'
         id = gets.chomp.to_i
         all.add_user(name, id)
         puts 'All ready'
@@ -152,7 +149,6 @@ while continue
       else
         puts 'Incorrect option'
       end
-      
     else
     puts 'Error: INCORRECT OPTION'
   end
