@@ -70,7 +70,7 @@ while continue
         all.delete_movie(index)
       elsif option == 4
         all.list_movie
-        puts 'select to movie'
+        puts 'Select to movie'
         index = gets.chomp.to_i
         puts 'Insert new name'
         name = gets.chomp
@@ -81,9 +81,11 @@ while continue
         puts 'Select the movie'
         all. list_movie
         index_movie = gets.chomp.to_i
-        puts 'select categories:'
+        puts 'Select categories:'
         all.list_category
         index_category = gets.chomp.to_i
+        all.assign_categories(index_movie, index_category)
+        puts 'All ready'
         
       elsif option == 6
         puts 'Insert user identification:'
@@ -91,7 +93,7 @@ while continue
         respuesta = all.user_exist?(id) 
         if respuesta == true 
           all.list_movie
-          puts 'select the movie'
+          puts 'Select the movie'
           index = gets.chomp.to_i
           all.rented_movie(id, index)
         else

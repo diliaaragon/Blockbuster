@@ -51,7 +51,8 @@ class Store
     @movies[index].quantity += quant
   end
 
-  def assign_categories(index)
+  def assign_categories(index_movie, index_category)
+    @movies[index_movie].categories << @categories[index_category]
   end
 
   def add_user(name, id)
