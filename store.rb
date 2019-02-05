@@ -51,6 +51,9 @@ class Store
     @movies[index].quantity += quant
   end
 
+  def assign_categories(index)
+  end
+
   def add_user(name, id)
     p = User.new(name, id)
     @users << p
@@ -71,5 +74,29 @@ class Store
   def edit_user(name, id, index)
     @users[index].name = name
     @users[index].id = id
+  end
+
+  def user_exist?(id)
+    @users.each do |user|
+      if user.id == id
+        return true
+      end
+     return false
+    end 
+  end
+
+  def rented_movie(id, index)
+    @users.each do |user|
+      if user.id == id
+        user.movies << @movies[index]
+        @movies[index].rented += 1
+        @movies[index].history << "The user #{user.name} rented this movie"
+      end
+    end
+  end
+
+  def return_movie(index)
+    @movies[index].quantity += 1
+    @movies[index].rented -= 1
   end
 end

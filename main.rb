@@ -78,10 +78,30 @@ while continue
         quant = gets.chomp.to_i
         all.edit_movie(index, name, quant)
       elsif option == 5
-        all.list_category
+        puts 'Select the movie'
+        all. list_movie
+        index_movie = gets.chomp.to_i
         puts 'select categories:'
+        all.list_category
+        index_category = gets.chomp.to_i
+        
+      elsif option == 6
+        puts 'Insert user identification:'
+        id = gets.chomp.to_i
+        respuesta = all.user_exist?(id) 
+        if respuesta == true 
+          all.list_movie
+          puts 'select the movie'
+          index = gets.chomp.to_i
+          all.rented_movie(id, index)
+        else
+          puts "User don't exist"
+        end 
+      elsif option == 7
+        puts 'What movie do you want to return?'
+        all.list_movie
         index = gets.chomp.to_i
-        movie.add_category_at_movie (index)
+        all.return_movie(index)
       else
         puts 'Error: incorrect option'
       end
@@ -114,7 +134,7 @@ while continue
         puts 'Select the user you want to edit:'
         index = gets.chomp.to_i
         puts 'New name:'
-        name = gets.chomp 
+        name = gets.chomp
         puts 'New identification:'
         id = gets.chomp.to_i
         all.edit_user(name, id, index)

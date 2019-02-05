@@ -7,9 +7,4 @@ class Movie
     @categories = []
     @history = []
   end
-
-  def add_category_at_movie (index)
-    @categories << index
-  end
-
 end
