@@ -52,11 +52,12 @@ while continue
       _______________________
       | 1. Add              |
       | 2. List             |
-      | 3.Delete            |
-      | 4.Edit              |
-      | 5.Assign categories |
+      | 3. Delete           |
+      | 4. Edit             |
+      | 5. Assign categories|
       | 6. Rented           |
       | 7. Return movie     |
+      | 8. Show hitorial    |
       | SELECT ONE OPTION   |
       """
       option = gets.chomp.to_i
@@ -105,6 +106,11 @@ while continue
         store.list_movie
         index = gets.chomp.to_i
         store.return_movie(index)
+      elsif option == 8
+        puts 'What movie do you want to see the history of?'
+        store.list_movie
+        index = gets.chomp.to_i
+        store.look_history(index)
       else
         puts 'Error: incorrect option'
       end
@@ -112,9 +118,9 @@ while continue
       puts """
       ____________________
       | 1. Add           |
-      |2. List           |
-      |3.Delete          |
-      |4.Edit            |
+      | 2. List          |
+      | 3. Delete        |
+      | 4. Edit          |
       |SELECT ONE OPTION |
       """
       option = gets.chomp.to_i

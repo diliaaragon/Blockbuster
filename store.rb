@@ -88,4 +88,9 @@ class Store
     @movies[index].quantity += 1
     @movies[index].rented -= 1
   end
+
+  def look_history(index)
+    movie = @movies[index]
+    puts movie.history
+  end 
 end
