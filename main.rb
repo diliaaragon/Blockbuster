@@ -1,5 +1,5 @@
 require './store'
-all = Store.new
+store = Store.new
 
 continue = true
 
@@ -29,21 +29,21 @@ while continue
       if option == 1
         puts 'Insert name of categoy:'
         name = gets.chop
-        all.add_category(name)
+        store.add_category(name)
       elsif option == 2
-        all.list_category
+        store.list_category
       elsif option == 3
-        all.list_category
+        store.list_category
         puts 'What category do you want to delete?'
         index = gets.chomp.to_i
-        all.delete_category(index)
+        store.delete_category(index)
       elsif option == 4
-        all.list_category
+        store.list_category
         puts 'What category do you want to edit?'
         index = gets.chomp.to_i
         puts 'Insert new name:'
         name = gets.chomp
-        all.edit_category(index, name)
+        store.edit_category(index, name)
       else
         puts "Incorrect option"
       end
@@ -65,50 +65,46 @@ while continue
         name = gets.chop
         puts 'Insert the quantity of stock:'
         quant = gets.chomp.to_i
-        all.add_movie(name, quant)
+        store.add_movie(name, quant)
         puts 'OK'
       elsif option == 2
-        all.list_movie
+        store.list_movie
       elsif option == 3
-        all.list_movie
+        store.list_movie
         puts 'What movie do you want to eliminate?'
         index = gets.chomp.to_i
-        all.delete_movie(index)
+        store.delete_movie(index)
       elsif option == 4
-        all.list_movie
+        store.list_movie
         puts 'Select to movie'
         index = gets.chomp.to_i
         puts 'Insert new name'
         name = gets.chomp
         puts 'Insert new quantity'
         quant = gets.chomp.to_i
-        all.edit_movie(index, name, quant)
+        store.edit_movie(index, name, quant)
       elsif option == 5
         puts 'Select the movie'
-        all. list_movie
+        store. list_movie
         index_movie = gets.chomp.to_i
         puts 'Select categories:'
-        all.list_category
+        store.list_category
         index_category = gets.chomp.to_i
-        all.assign_categories(index_movie, index_category)
-        puts 'All ready'
+        store.assign_categories(index_movie, index_category)
+        puts 'store ready'
       elsif option == 6
-        puts 'Insert user identification:'
-        id = gets.chomp.to_i
-        respuesta = all.user_exist?(id)
-        if respuesta == true
-          all.list_movie
-          puts 'Select the movie'
-          index = gets.chomp.to_i
-          all.rented_movie(id, index)
-        else
-          puts "User don't exist"
-        end
+        puts 'Select a user:'
+        store.list_user
+        index_user = gets.chomp.to_i
+        puts 'Select the movie'
+        store.list_movie
+        index_movie = gets.chomp.to_i
+        store.rented_movie(index_user, index_movie)
       elsif option == 7
         puts 'What movie do you want to return?'
-        all.list_movie
+        store.list_movie
         index = gets.chomp.to_i
-        all.return_movie(index)
+        store.return_movie(index)
       else
         puts 'Error: incorrect option'
       end
@@ -128,24 +124,24 @@ while continue
         name = gets.chomp
         puts 'Identification:'
         id = gets.chomp.to_i
-        all.add_user(name, id)
-        puts 'All ready'
+        store.add_user(name, id)
+        puts 'store ready'
       elsif option == 2
-        all.list_user
+        store.list_user
       elsif option == 3
-        all.list_user
+        store.list_user
         puts 'Select the user you want to delete:'
         index = gets.chomp.to_i
-        all.delete_user(index)
+        store.delete_user(index)
       elsif option == 4
-        all.list_user
+        store.list_user
         puts 'Select the user you want to edit:'
         index = gets.chomp.to_i
         puts 'New name:'
         name = gets.chomp
         puts 'New identification:'
         id = gets.chomp.to_i
-        all.edit_user(name, id, index)
+        store.edit_user(name, id, index)
       else
         puts 'Incorrect option'
       end

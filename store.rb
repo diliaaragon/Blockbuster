@@ -77,23 +77,11 @@ class Store
     @users[index].id = id
   end
 
-  def user_exist?(id)
-    @users.each do |user|
-      if user.id == id
-        return true
-      end
-     return false
-    end 
-  end
-
-  def rented_movie(id, index)
-    @users.each do |user|
-      if user.id == id
-        user.movies << @movies[index]
-        @movies[index].rented += 1
-        @movies[index].history << "The user #{user.name} rented this movie"
-      end
-    end
+  def rented_movie(index_user, index_movie)
+    user = @users[index_user] 
+    user.movies << @movies[index_movie]
+    @movies[index_movie].rented += 1
+    @movies[index_movie].history << "The user #{user.name} rented this movie"
   end
 
   def return_movie(index)
