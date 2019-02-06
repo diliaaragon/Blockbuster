@@ -92,5 +92,10 @@ class Store
   def look_history(index)
     movie = @movies[index]
     puts movie.history
-  end 
+  end
+
+  def list_rented_movies(index)
+   user = @users[index]
+   puts user.movies
+  end
 end

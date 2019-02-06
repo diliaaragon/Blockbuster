@@ -116,12 +116,13 @@ while continue
       end
     when  3
       puts """
-      ____________________
-      | 1. Add           |
-      | 2. List          |
-      | 3. Delete        |
-      | 4. Edit          |
-      |SELECT ONE OPTION |
+      _______________________________
+      | 1. Add                      |
+      | 2. List                     |
+      | 3. Delete                   |
+      | 4. Edit                     |
+      | 5. List of the rented movies|
+      |     SELECT ONE OPTION       |
       """
       option = gets.chomp.to_i
       if option == 1
@@ -148,6 +149,11 @@ while continue
         puts 'New identification:'
         id = gets.chomp.to_i
         store.edit_user(name, id, index)
+      elsif option == 4
+        puts 'Select a user'
+        store.list_user
+        index = gets.chomp.to_i
+        list_rented_movies(index)
       else
         puts 'Incorrect option'
       end
