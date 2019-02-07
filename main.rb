@@ -100,7 +100,9 @@ while continue
         puts 'Select the movie'
         store.list_movie
         index_movie = gets.chomp.to_i
-        store.rented_movie(index_user, index_movie)
+        puts 'Date of return DD/MM/AAAA'
+        date = gets.chomp
+        store.rented_movie(index_user, index_movie, date)
       elsif option == 7
         puts 'What movie do you want to return?'
         store.list_movie

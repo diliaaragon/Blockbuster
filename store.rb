@@ -77,16 +77,23 @@ class Store
     @users[index].id = id
   end
 
-  def rented_movie(index_user, index_movie)
+  def rented_movie(index_user, index_movie, date)
     user = @users[index_user] 
-    user.movies << @movies[index_movie]
+    movie = @movies[index_movie]
+    user.movies << movie
+    user.history << movie.name
     @movies[index_movie].rented += 1
-    @movies[index_movie].history << "The user #{user.name} rented this movie"
+    @movies[index_movie].history << "The user #{user.name} rented this movie - date of return: #{date}"
   end
 
-  def return_movie(index)
+  def return_movie(index, user)
     @movies[index].quantity += 1
     @movies[index].rented -= 1
+    @users[user].movies.each do |movie|
+      if movie.name == @movies[index].name
+        @users[user].movies.delete_at(movie)
+      end
+    end
   end
 
   def look_history(index)
@@ -96,6 +103,9 @@ class Store
 
   def list_rented_movies(index)
    user = @users[index]
+   puts 'Currently rented movies'
    puts user.movies
+   puts 'All movies rented by this user are:'
+   puts user.history
   end
 end
