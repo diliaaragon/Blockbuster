@@ -11,8 +11,14 @@ class Store
   end
 
   def add_category(name)
-    p = Categories.new(name)
-    @categories << p
+    @categories.each do |category|
+      unless category.name == name
+        p = Categories.new(name)
+        @categories << p
+      else
+       puts'Existing category'
+      end
+    end
   end
 
   def list_category
@@ -31,8 +37,14 @@ class Store
   end 
 
   def add_movie(name, quant)
-    p = Movie.new(name, quant)
-    @movies << p
+    @movies.each do |movie|
+      unless movie.name == name
+        p = Movie.new(name, quant)
+        @movies << p
+      else
+        puts 'Existing movie'
+      end
+    end
   end
 
   def list_movie
@@ -56,8 +68,14 @@ class Store
   end
 
   def add_user(name, id)
-    p = User.new(name, id)
-    @users << p
+    @users.each do |user|
+      unless user.id == id
+        p = User.new(name, id)
+        @users << p
+      else
+        puts'Existing user'
+      end
+    end
   end
 
   def list_user
