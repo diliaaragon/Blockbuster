@@ -64,7 +64,12 @@ class Store
     @users.each_with_index do |user, index|
       name = user.name
       id = user.id
-      puts "#{index}. #{name} - id: #{id}"
+      movies = user.movies
+      num = 0
+      movies.each_with_index do |movie, index|
+        num = index + 1
+      end
+      puts "#{index}. #{name} - id: #{id} rented movies: #{num}"
     end
   end
 

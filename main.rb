@@ -151,7 +151,7 @@ while continue
         puts 'New identification:'
         id = gets.chomp.to_i
         store.edit_user(name, id, index)
-      elsif option == 4
+      elsif option == 5
         puts 'Select a user'
         store.list_user
         index = gets.chomp.to_i
