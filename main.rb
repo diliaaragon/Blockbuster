@@ -129,6 +129,8 @@ while continue
       | 3. Delete                   |
       | 4. Edit                     |
       | 5. List of the rented movies|
+      | 6. List the three users with|
+      | the most movies rented      |
       |     SELECT ONE OPTION       |
       """
       option = gets.chomp.to_i
@@ -160,7 +162,9 @@ while continue
         puts 'Select a user'
         store.list_user
         index = gets.chomp.to_i
-        list_rented_movies(index)
+        store.list_rented_movies(index)
+      elsif option == 6
+        store.list_loyal_customers
       else
         puts 'Incorrect option'
       end

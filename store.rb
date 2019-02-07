@@ -92,12 +92,9 @@ class Store
   end
 
   def movies_by_categories(category)
-    @movies.each do |movie|
-      categories = movie.categories
-      categories.each do |category|
-        if category.name == category
-          puts movie.name
-        end
+    @movies.select do |movie|
+      if movie.categories == category
+        puts movie.name
       end
     end  
   end
@@ -124,6 +121,7 @@ class Store
     if movie.rented <= movie.quantity && cont < 3
       user.movies << movie
       user.history << movie.name
+      user.movie += 1
       @movies[index_movie].rented += 1
       @movies[index_movie].history << "The user #{user.name} rented this movie - date of return: #{date}"
     else
@@ -152,5 +150,14 @@ class Store
    puts user.movies
    puts 'All movies rented by this user are:'
    puts user.history
+  end
+
+  def list_loyal_customers
+    @users.sort! do |a, b|
+      b.movie <=> a.movie
+    end
+    puts @users[0]
+    puts @users[1]
+    puts @users[2]
   end
 end
