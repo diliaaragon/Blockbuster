@@ -73,6 +73,17 @@ class Store
     end
   end
 
+  def movies_by_categories(category)
+    @movies.each do |movie|
+      categories = movie.categories
+      categories.each do |category|
+        if category.name == category
+          puts movie.name
+        end
+      end
+    end  
+  end
+
   def delete_user(index)
     @users.delete_at(index)
   end
@@ -85,10 +96,21 @@ class Store
   def rented_movie(index_user, index_movie, date)
     user = @users[index_user] 
     movie = @movies[index_movie]
-    user.movies << movie
-    user.history << movie.name
-    @movies[index_movie].rented += 1
-    @movies[index_movie].history << "The user #{user.name} rented this movie - date of return: #{date}"
+    cont = 0
+    user.movies.each do |movie|
+      if movie != nil
+        cont += 1
+      end 
+    end 
+
+    if movie.rented <= movie.quantity && cont < 3
+      user.movies << movie
+      user.history << movie.name
+      @movies[index_movie].rented += 1
+      @movies[index_movie].history << "The user #{user.name} rented this movie - date of return: #{date}"
+    else
+     puts 'This movie is not available or the user has too many rented movies'
+    end
   end
 
   def return_movie(index, user)

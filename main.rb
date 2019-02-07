@@ -58,6 +58,7 @@ while continue
       | 6. Rented           |
       | 7. Return movie     |
       | 8. Show hitorial    |
+      | 9. list by category |
       | SELECT ONE OPTION   |
       """
       option = gets.chomp.to_i
@@ -113,6 +114,10 @@ while continue
         store.list_movie
         index = gets.chomp.to_i
         store.look_history(index)
+      elsif option == 9
+        puts 'Enter the category of the movies you wish to list'
+        category = gets.chomp
+        store.movies_by_categories(category)
       else
         puts 'Error: incorrect option'
       end
